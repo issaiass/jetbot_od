@@ -1,0 +1,11 @@
+<library path="lib/libjetbot_od">
+
+  <class name="jetbot_od/threshold" type="jetbot_od::ThresholdNodelet" base_class_type="nodelet::Nodelet">
+    <description>Nodelet of threshold</description>
+  </class>
+
+  <class name="jetbot_od/yolo" type="jetbot_od::YOLONodelet" base_class_type="nodelet::Nodelet">
+    <description>Nodelet of YOLO</description>
+  </class>
+
+</library>

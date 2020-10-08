@@ -1,0 +1,9 @@
+<launch>
+
+  <arg name="node_name" default="yolo" />
+  <arg name="image" default="/jetbot_camera/image_raw" doc="The image topic to remap" />
+  
+  <node name="$(arg node_name)" pkg="jetbot_od" type="yolo">
+    <remap from="image" to="$(arg image)" />
+  </node>
+</launch>
