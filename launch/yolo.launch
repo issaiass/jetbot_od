@@ -1,9 +1,30 @@
 <launch>
 
   <arg name="node_name" default="yolo" />
-  <arg name="image" default="/jetbot_camera/image_raw" doc="The image topic to remap" />
-  
-  <node name="$(arg node_name)" pkg="jetbot_od" type="yolo">
+  <arg name="image" default="/jetbot_camera/image_raw" doc="The image topic. Should be remapped to the name of the real image topic." />
+
+  <arg name="use_camera_info" default="false" doc="Indicates that the camera_info topic should be subscribed to to get the default input_frame_id. Otherwise the frame from the image message will be used." />
+  <arg name="debug_view" default="true" doc="Specify whether the node displays a window to show edge image" />
+  <arg name="queue_size" default="3" doc="Specigy queue_size of input image subscribers" />
+
+  <arg name="obj_thr" default="0.5" doc="The object detection minimal confidence" />
+  <arg name="conf_thr" default="0.5" doc="The confindece threshold" />
+  <arg name="nms_thr" default="0.4" doc="The Non Maxima Suppresion for eliminate recurrent bounding boxes"/>
+  <arg name="inputW" default="448" doc="YOLO Image Width (see documentation)"/>
+  <arg name="inputH" default="448" doc="YOLO Image Height (see documentation)"/>  
+
+  <!-- yolo.cpp -->
+  <node name="$(arg node_name)"
+        pkg="jetbot_od" type="yolo">
     <remap from="image" to="$(arg image)" />
+    <param name="use_camera_info" value="$(arg use_camera_info)" />
+    <param name="debug_view" value="$(arg debug_view)" />
+    <param name="queue_size" value="$(arg queue_size)" />
+    <param name="obj_thr" value="$(arg obj_thr)" />
+    <param name="conf_thr" value="$(arg conf_thr)" />
+    <param name="nms_thr" value="$(arg nms_thr)" />
+    <param name="inputW" value="$(arg inputW)" />
+    <param name="inputH" value="$(arg inputH)" />    
   </node>
+
 </launch>
