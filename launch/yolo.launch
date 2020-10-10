@@ -7,11 +7,13 @@
   <arg name="debug_view" default="true" doc="Specify whether the node displays a window to show edge image" />
   <arg name="queue_size" default="3" doc="Specigy queue_size of input image subscribers" />
 
-  <arg name="obj_thr" default="0.5" doc="The object detection minimal confidence" />
+  <arg name="yolo_cfg" default="$(find jetbot_od)/object_detection/yolo/yolov3.cfg" doc="The configuration file for the yolo model" />
+  <arg name="yolo_weights" default="$(find jetbot_od)/object_detection/yolo/yolov3.weights" doc="The weights file of the model" />
+  <arg name="yolo_names" default="$(find jetbot_od)/object_detection/yolo/coco.names" doc="The objects to predict" />  
   <arg name="conf_thr" default="0.5" doc="The confindece threshold" />
   <arg name="nms_thr" default="0.4" doc="The Non Maxima Suppresion for eliminate recurrent bounding boxes"/>
-  <arg name="inputW" default="448" doc="YOLO Image Width (see documentation)"/>
-  <arg name="inputH" default="448" doc="YOLO Image Height (see documentation)"/>  
+  <arg name="inputW" default="416" doc="YOLO Image Width (see documentation)"/>
+  <arg name="inputH" default="416" doc="YOLO Image Height (see documentation)"/>  
 
   <!-- yolo.cpp -->
   <node name="$(arg node_name)"
@@ -20,7 +22,9 @@
     <param name="use_camera_info" value="$(arg use_camera_info)" />
     <param name="debug_view" value="$(arg debug_view)" />
     <param name="queue_size" value="$(arg queue_size)" />
-    <param name="obj_thr" value="$(arg obj_thr)" />
+    <param name="yolo_cfg" value="$(arg yolo_cfg)" />
+    <param name="yolo_weights" value="$(arg yolo_weights)" />
+    <param name="yolo_names" value="$(arg yolo_names)" />    
     <param name="conf_thr" value="$(arg conf_thr)" />
     <param name="nms_thr" value="$(arg nms_thr)" />
     <param name="inputW" value="$(arg inputW)" />
