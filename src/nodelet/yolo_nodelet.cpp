@@ -238,11 +238,11 @@ class YOLONodelet : public jetbot_od::Nodelet
       // Remove the bounding boxes with low confidence
       postprocess(src_image, outs);
       // Put efficiency information. The function getPerfProfile returns the overall time for inference(t) and the timings for each of the layers(in layersTimes)
-      std::vector<double> layersTimes;
-      double freq = getTickFrequency() / 1000;
-      double t = net.getPerfProfile(layersTimes) / freq;
-      std::string label = format("Inference time for a frame : %.2f ms", t);
-      putText(src_image, label, Point(0, 15), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 255));
+      //std::vector<double> layersTimes;
+      //double freq = getTickFrequency() / 1000;
+      //double t = net.getPerfProfile(layersTimes) / freq;
+      //std::string label = format("Inference time for a frame : %.2f ms", t);
+      //putText(src_image, label, Point(0, 15), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 255));
 
       if (debug_view_)
       {
